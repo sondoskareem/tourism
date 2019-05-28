@@ -85,4 +85,3 @@ app.use('/api/v1/admin',adminRouter)
 server.listen(PORT, () => {
   console.log('Running on port ' + PORT);
 });
-
