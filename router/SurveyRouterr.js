@@ -25,18 +25,19 @@ router.post('/submit',license_check,check_Tourism, (req, res) => {
     if (validating.error) {
         res.status(400).send(validating.error.details[0].message)
     } else {
-        // var sumOfRating = parseFloat(req.body.survey) 
-        // var avg = (sumOfRating).toFixed(2);
-        // var floatAvg = parseFloat(avg);
+        
         var floatAvg = parseInt(req.body.status)
         var rating;
         var ppcount=req.check_Tourism.pplCount+1;
         var sum=parseFloat(req.check_Tourism.sum)+floatAvg
 
         if (req.check_Tourism.rating != 0) {
-            // var ratingAvg = parseFloat(req.check_Table.rating) + floatAvg
             rating = sum / ppcount
+            if (rating > 3){
+                rating = 3;
+            }
         } else {
+            if(floatAvg>3){floatAvg=3}
             rating = floatAvg;
         }
         var date= moment().format('DD/MM/YYYY, h:mm:ss a');
@@ -46,7 +47,6 @@ router.post('/submit',license_check,check_Tourism, (req, res) => {
             email: req.body.email,
             tourism_id: req.check_Tourism._id,
             phone: req.body.phone,
-            // region: req.body.region,
             server: req.body.server,
             note: req.body.note,
             status: req.body.status,
@@ -64,8 +64,6 @@ router.post('/submit',license_check,check_Tourism, (req, res) => {
                 _id: req.check_Tourism._id
             }, {
                 $set: {
-                    // "red": status,
-                    // "last_rating": floatAvg,
                     "pplCount":ppcount,
                     "sum":sum,
                     "rating": (parseInt(rating)),
@@ -87,14 +85,6 @@ router.post('/submit',license_check,check_Tourism, (req, res) => {
 
 });
 
-
-
-function surveyViewValidating(survey) {
-    const surveyViewSchema = {
-        '_id': Joi.string().required(),
-    }
-    return Joi.validate(survey, surveyViewSchema);
-}
 
 function userValidating(survey) {
     const SurveySchema = {

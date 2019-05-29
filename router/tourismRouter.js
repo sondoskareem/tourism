@@ -13,9 +13,9 @@ const license_check = require("../middleware/license_check.1");
 
 ///////////////////////get profile for tourism
 
-router.get('/me', license_check, (req, res) => {
-  User.find({ _id: req.check_tourism._id })
-    .select('_id email phone phone logo red rating pplCount lastSurvey licenseDate uptime')
+router.get('/me',check_tourism, license_check, (req, res) => {
+  User.find({ _id: req.check_Tourism._id })
+    .select('_id email phone logo rating pplCount lastSurvey licenseDate uptime')
     .then(result => {
       res.send({ profile: result })
     })

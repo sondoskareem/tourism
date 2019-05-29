@@ -46,7 +46,7 @@ check_admin ,
           _id: new mongoose.Types.ObjectId(),
           email: req.body.email.toLowerCase(),
           password: hash,
-          adminPassword: req.body.admin_password,
+          adminPassword: req.body.adminPassword,
           name: req.body.name,
           phone: req.body.phone,
           comp_id: req.body.comp_id,
@@ -130,7 +130,7 @@ function userValidating(user) {
     'name': Joi.string().required(),
     'comp_id': Joi.string().required(),
     'phone': Joi.string().required(),
-    'admin_password': Joi.string().required(),
+    'adminPassword': Joi.string().required(),
     'license':Joi.string().required(),
 
   }

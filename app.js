@@ -49,9 +49,6 @@ app.use(
 next()
 },express.static('public'), );
 
-
-
-
 // const MONGO_USERNAME = "readWriteUserTab3";
 // const MONGO_PASSWORD = "tab3ya7lOm63Mk#$!)_-";
 // const MONGO_HOSTNAME = '127.0.0.1';

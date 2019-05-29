@@ -8,10 +8,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: [true, 'name Is Required'],
   },
-  // adminPassword:{
-  //   type: String,
-  //   required: [true, 'admin password is required']
-  // },
+  adminPassword:{
+    type: String,
+    required: [true, 'admin password is required']
+  },
 
   page_name: {
     type: String,

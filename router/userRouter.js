@@ -58,7 +58,7 @@ check_admin ,
           discount: req.body.discount,
           type: "res",
           logo: urlFile,
-          // adminPassword:req.body.adminPassword,
+          adminPassword:req.body.adminPassword,
           uptime: moment().format('DD/MM/YYYY')
         });
         user.save()
@@ -89,7 +89,7 @@ function userValidating(user) {
     'name': Joi.string().required(),
     'phone': Joi.string().required(),
     'page_name': Joi.string().required(),
-    // 'adminPassword' : Joi.string().required()
+    'adminPassword' : Joi.string().required()
 
   }
   return Joi.validate(user, userSchema);
